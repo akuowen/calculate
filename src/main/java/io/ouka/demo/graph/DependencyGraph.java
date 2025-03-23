@@ -25,15 +25,14 @@ public class DependencyGraph {
         return Collections.unmodifiableSet(dependencies.getOrDefault(metric, Collections.emptySet()));
     }
 
-
     public void updateDependency(String metric, Set<String> newDependencies) {
-        // 移除旧依赖
         Set<String> oldDeps = dependencies.getOrDefault(metric, Collections.emptySet());
-        oldDeps.forEach(dep ->
-                dependents.get(dep).remove(metric)
-        );
-
-        // 添加新依赖
+        oldDeps.forEach(dep -> {
+            Set<String> deps = dependents.get(dep);
+            if (deps != null) {
+                deps.remove(metric);
+            }
+        });
         dependencies.put(metric, new HashSet<>(newDependencies));
         newDependencies.forEach(dep ->
                 dependents.computeIfAbsent(dep, k -> ConcurrentHashMap.newKeySet()).add(metric)

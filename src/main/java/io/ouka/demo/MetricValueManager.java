@@ -16,7 +16,6 @@ public class MetricValueManager implements Subject {
 
     public void setValue(String metric, double value) {
         Double previous = values.get(metric);
-        // 精确比较浮点数变化
         if (previous == null || Math.abs(previous - value) > 1e-6) {
             values.put(metric, value);
             notifyObservers(EventType.VALUE_UPDATED, metric, value);
@@ -42,7 +41,10 @@ public class MetricValueManager implements Subject {
 
     @Override
     public void removeObserver(Observer observer, EventType eventType) {
-
+        Set<Observer> set = observers.get(eventType);
+        if (set != null) {
+            set.remove(observer);
+        }
     }
 
     @Override

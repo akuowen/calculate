@@ -6,13 +6,9 @@ import java.util.Map;
 
 public class CalculationSystemTest {
     public static void main(String[] args) {
-        FunctionRegistry.register("pow", params -> Math.pow(params.get(0), params.get(1)));
-
-        testExpression("2 + 3 * 4", Map.of(), 14.0);
-
-        testExpression("nvl(a, 5) + sqrt(b)", Map.of("b", 9.0), 5.0 + 3.0);
-
-        testExpression("pow(2, 3) * (max(5, 3) - min(4, 2))", Map.of(), (8.0 * 5.0) - 2.0);
+        testExpression("2+3*4", Map.of(), 14.0);
+        testExpression("nvl(a,5)+sqrt(b)", Map.of("b", 9.0), 5.0 + 3.0);
+        testExpression("pow(2,3)*(max(5,3)-min(4,2))", Map.of(), (Math.pow(2, 3) * (5 - 2)));
     }
 
     private static void testExpression(String expr, Map<String, Double> context, double expected) {
@@ -23,7 +19,7 @@ public class CalculationSystemTest {
                     expr,
                     result,
                     expected,
-                    Math.abs(result - expected) < 0.001 ? "✓" : "✗");
+                    Math.abs(result - expected) < 1e-6 ? "✓" : "✗");
         } catch (CalculationException e) {
             System.err.println("表达式错误: " + expr + " - " + e.getMessage());
         }

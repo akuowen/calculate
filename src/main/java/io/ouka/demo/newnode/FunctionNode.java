@@ -19,6 +19,14 @@ public class FunctionNode implements ExpressionNode {
         this.function = FunctionRegistry.getFunction(name);
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public List<ExpressionNode> getArgs() {
+        return args;
+    }
+
     @Override
     public double evaluate(Map<String, Double> context) throws CalculationException {
         try {
@@ -27,7 +35,7 @@ public class FunctionNode implements ExpressionNode {
                     .collect(Collectors.toList());
             return function.apply(evaluatedArgs);
         } catch (Exception e) {
-            throw new CalculationException("函数计算错误: " + name + " - " + e.getMessage());
+            throw new CalculationException("函数计算错误: " + name + " - " + e.getMessage(), e);
         }
     }
 

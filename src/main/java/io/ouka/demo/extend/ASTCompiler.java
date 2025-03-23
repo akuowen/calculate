@@ -15,7 +15,6 @@ public class ASTCompiler {
         return CACHE.computeIfAbsent(expression, expr -> {
             try {
                 ExpressionNode ast = new ExpressionParser(expr).parse();
-
                 return new BytecodeGenerator().compile(ast);
             } catch (ParseException e) {
                 throw new CalculationException("编译失败: " + expr, e);

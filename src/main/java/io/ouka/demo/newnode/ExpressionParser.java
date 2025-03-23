@@ -17,7 +17,7 @@ public class ExpressionParser {
 
     public ExpressionNode parse() throws ParseException {
         ExpressionNode node = parseExpression();
-        if (pos < expression.length() - 1) { // 忽略结束符#
+        if (pos < expression.length() - 1) {
             throw new ParseException("未预期的结束位置: " + pos);
         }
         return node;
@@ -76,9 +76,8 @@ public class ExpressionParser {
         while (pos < expression.length() && (Character.isLetterOrDigit(expression.charAt(pos)) || expression.charAt(pos) == '_')) {
             sb.append(expression.charAt(pos++));
         }
-
         if (pos < expression.length() && expression.charAt(pos) == '(') {
-            pos++;
+            pos++; // 跳过 '('
             List<ExpressionNode> args = parseArguments();
             expect(')');
             return new FunctionNode(sb.toString(), args);
@@ -114,7 +113,7 @@ public class ExpressionParser {
 
     private void expect(char expected) throws ParseException {
         if (pos >= expression.length() || expression.charAt(pos++) != expected) {
-            throw new ParseException("期望字符 '" + expected + "' 位置: " + (pos-1));
+            throw new ParseException("期望字符 '" + expected + "' 位置: " + (pos - 1));
         }
     }
 }

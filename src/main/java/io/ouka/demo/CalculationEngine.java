@@ -25,19 +25,13 @@ public class CalculationEngine implements Observer {
         try {
             ExpressionNode ast = new ExpressionParser(expression).parse();
             Set<String> newDeps = ast.getVariables();
-
-            // 更新依赖关系（关键修复）
             dependencies.updateDependency(metric, newDeps);
             expressions.put(metric, ast);
-
-            // 立即计算初始值
             calculate(metric);
-
         } catch (ParseException e) {
-            throw new CalculationException("解析失败: " + metric + " - " + e.getMessage());
+            throw new CalculationException("解析失败: " + metric + " - " + e.getMessage(), e);
         }
     }
-
 
     @Override
     public void update(EventType eventType, String metric, Object data) {
@@ -52,11 +46,8 @@ public class CalculationEngine implements Observer {
             try {
                 Map<String, Double> context = required.stream()
                         .collect(Collectors.toMap(k -> k, valueManager::getValue));
-
                 double newValue = expressions.get(metric).evaluate(context);
                 Double oldValue = valueManager.getValue(metric);
-
-                // 仅当值实际变化时更新
                 if (oldValue == null || Math.abs(newValue - oldValue) > 1e-6) {
                     valueManager.setValue(metric, newValue);
                     valueManager.notifyObservers(EventType.CALCULATION_DONE, metric, newValue);

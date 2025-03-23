@@ -7,7 +7,9 @@ import java.util.Set;
 public class ConstantNode implements ExpressionNode {
     private final double value;
 
-    public ConstantNode(double value) { this.value = value; }
+    public ConstantNode(double value) {
+        this.value = value;
+    }
 
     @Override
     public double evaluate(Map<String, Double> context) {
@@ -17,5 +19,9 @@ public class ConstantNode implements ExpressionNode {
     @Override
     public Set<String> getVariables() {
         return Collections.emptySet();
+    }
+
+    public double getValue() {
+        return value;
     }
 }

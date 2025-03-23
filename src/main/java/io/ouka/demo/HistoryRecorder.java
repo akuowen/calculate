@@ -18,9 +18,8 @@ public class HistoryRecorder implements Observer {
     @Override
     public void update(EventType eventType, String metric, Object data) {
         if (eventType == EventType.CALCULATION_DONE) {
-            // 去重检查：仅当与上次记录不同时保存
             Map<String, Double> current = valueManager.getAllValues();
-            if (history.isEmpty() || !current.equals(history.get(history.size()-1))) {
+            if (history.isEmpty() || !current.equals(history.get(history.size() - 1))) {
                 history.add(new HashMap<>(current));
             }
         }
@@ -34,7 +33,6 @@ public class HistoryRecorder implements Observer {
     public String toString() {
         return "HistoryRecorder{" +
                 "history=" + history +
-                ", valueManager=" + valueManager +
                 '}';
     }
 }

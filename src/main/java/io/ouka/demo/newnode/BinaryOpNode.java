@@ -13,6 +13,31 @@ public class BinaryOpNode implements ExpressionNode {
     private final BiFunction<Double, Double, Double> operation;
     private final String operator;
 
+    public BinaryOpNode(ExpressionNode left, ExpressionNode right, String op) {
+        this.left = left;
+        this.right = right;
+        this.operation = createOperation(op);
+        this.operator = op;
+    }
+
+    private BiFunction<Double, Double, Double> createOperation(String op) {
+        switch (op) {
+            case "+":
+                return (a, b) -> a + b;
+            case "-":
+                return (a, b) -> a - b;
+            case "*":
+                return (a, b) -> a * b;
+            case "/":
+                return (a, b) -> {
+                    if (b == 0) throw new ArithmeticException("Division by zero");
+                    return a / b;
+                };
+            default:
+                throw new IllegalArgumentException("Unknown operator: " + op);
+        }
+    }
+
     public String getOperator() {
         return operator;
     }
@@ -25,36 +50,12 @@ public class BinaryOpNode implements ExpressionNode {
         return right;
     }
 
-    public BiFunction<Double, Double, Double> getOperation() {
-        return operation;
-    }
-
-    public BinaryOpNode(ExpressionNode left, ExpressionNode right, String op) {
-        this.left = left;
-        this.right = right;
-        this.operation = createOperation(op);
-        this.operator = op;
-    }
-
-    private BiFunction<Double, Double, Double> createOperation(String op) {
-        switch (op) {
-            case "+": return (a, b) -> a + b;
-            case "-": return (a, b) -> a - b;
-            case "*": return (a, b) -> a * b;
-            case "/": return (a, b) -> {
-                if (b == 0) throw new ArithmeticException("Division by zero");
-                return a / b;
-            };
-            default: throw new IllegalArgumentException("Unknown operator: " + op);
-        }
-    }
-
     @Override
     public double evaluate(Map<String, Double> context) throws CalculationException {
         try {
             return operation.apply(left.evaluate(context), right.evaluate(context));
         } catch (Exception e) {
-            throw new CalculationException("计算错误: " + e.getMessage());
+            throw new CalculationException("计算错误: " + e.getMessage(), e);
         }
     }
 

@@ -13,6 +13,7 @@ public class FunctionRegistry {
         register("nvl", params -> params.get(0) != null ? params.get(0) : params.get(1));
         register("max", params -> params.stream().max(Double::compare).orElse(0.0));
         register("min", params -> params.stream().min(Double::compare).orElse(0.0));
+        register("pow", params -> Math.pow(params.get(0), params.get(1)));
     }
 
     public static void register(String name, Function<List<Double>, Double> function) {
