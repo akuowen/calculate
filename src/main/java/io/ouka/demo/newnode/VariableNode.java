@@ -7,6 +7,10 @@ import java.util.Set;
 public class VariableNode implements ExpressionNode {
     private final String name;
 
+    public String getName() {
+        return name;
+    }
+
     public VariableNode(String name) { this.name = name; }
 
     @Override

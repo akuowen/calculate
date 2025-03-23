@@ -14,4 +14,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.ow2.asm</groupId>
+            <artifactId>asm</artifactId>
+            <version>9.7.1</version>
+        </dependency>
+    </dependencies>
+
 </project>

@@ -11,11 +11,29 @@ public class BinaryOpNode implements ExpressionNode {
     private final ExpressionNode left;
     private final ExpressionNode right;
     private final BiFunction<Double, Double, Double> operation;
+    private final String operator;
+
+    public String getOperator() {
+        return operator;
+    }
+
+    public ExpressionNode getLeft() {
+        return left;
+    }
+
+    public ExpressionNode getRight() {
+        return right;
+    }
+
+    public BiFunction<Double, Double, Double> getOperation() {
+        return operation;
+    }
 
     public BinaryOpNode(ExpressionNode left, ExpressionNode right, String op) {
         this.left = left;
         this.right = right;
         this.operation = createOperation(op);
+        this.operator = op;
     }
 
     private BiFunction<Double, Double, Double> createOperation(String op) {
