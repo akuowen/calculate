@@ -2,10 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**Read this in other languages: [English](README_CN.md)**
+**Read this in other languages: [English](README.md)**
 
 Calculate 是一个开源 Maven 项目，它使用抽象语法树 （AST）
-解析和评估算术表达式并生成优化的字节码。最初设计为使用 'double' 进行计算，此版本已被重构为使用 'BigDecimal'
+解析和评估算术表达式并生成优化的字节码。目前设计为使用 'double' 进行计算，后续版本重构为使用 'BigDecimal'
 来确保高精度运算，使其特别适用于金融和科学计算。
 
 > **注意：**

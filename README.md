@@ -5,7 +5,7 @@
 
 **Read this in other languages: [简体中文](README_CN.md)**
 
-Calculate an open-source Maven project that parses and evaluates arithmetic expressions using an Abstract Syntax Tree (AST) and generates optimized bytecode. Originally designed to work with `double` for computations, this version has been refactored to use `BigDecimal` to ensure high-precision arithmetic, making it especially suitable for financial and scientific calculations.
+Calculate an open-source Maven project that parses and evaluates arithmetic expressions using an Abstract Syntax Tree (AST) and generates optimized bytecode. Originally designed to work with `double` for computations, after version will be refactored to use `BigDecimal` to ensure high-precision arithmetic, making it especially suitable for financial and scientific calculations.
 
 > **Note:**  
 > This project is a work in progress. The current version supports interpretation mode with BigDecimal-based evaluation. Future improvements will include extending the compile mode (bytecode generation) to support BigDecimal operations and further performance optimizations.
