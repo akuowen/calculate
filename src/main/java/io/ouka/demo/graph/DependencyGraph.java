@@ -1,4 +1,4 @@
-package org.example.demo.graph;
+package io.ouka.demo.graph;
 
 import java.util.Collections;
 import java.util.HashSet;

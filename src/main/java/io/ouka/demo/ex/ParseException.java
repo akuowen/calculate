@@ -1,4 +1,4 @@
-package org.example.demo.ex;
+package io.ouka.demo.ex;
 
 public class ParseException extends RuntimeException {
   public ParseException(String message) { super(message); }

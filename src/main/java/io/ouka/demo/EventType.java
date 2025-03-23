@@ -1,4 +1,4 @@
-package org.example.demo;
+package io.ouka.demo;
 
 public enum EventType {
     EXPRESSION_PARSED,  // 表达式解析完成

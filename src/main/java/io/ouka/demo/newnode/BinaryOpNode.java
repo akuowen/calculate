@@ -1,6 +1,6 @@
-package org.example.demo.newnode;
+package io.ouka.demo.newnode;
 
-import org.example.demo.ex.CalculationException;
+import io.ouka.demo.ex.CalculationException;
 
 import java.util.HashSet;
 import java.util.Map;

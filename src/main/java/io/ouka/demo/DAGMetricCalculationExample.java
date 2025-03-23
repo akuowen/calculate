@@ -1,7 +1,7 @@
-package org.example.demo;
+package io.ouka.demo;
 
-import org.example.demo.ex.CalculationException;
-import org.example.demo.graph.DependencyGraph;
+import io.ouka.demo.ex.CalculationException;
+import io.ouka.demo.graph.DependencyGraph;
 
 public class DAGMetricCalculationExample {
     public static void main(String[] args) {

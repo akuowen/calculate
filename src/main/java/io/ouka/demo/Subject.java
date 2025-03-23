@@ -1,4 +1,4 @@
-package org.example.demo;
+package io.ouka.demo;
 
 public interface Subject {
     void registerObserver(Observer observer, EventType eventType);

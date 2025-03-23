@@ -1,4 +1,4 @@
-package org.example.demo.newnode;
+package io.ouka.demo.newnode;
 
 import java.util.List;
 import java.util.Map;

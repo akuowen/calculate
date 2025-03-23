@@ -1,6 +1,6 @@
-package org.example.demo;
+package io.ouka.demo;
 
-import org.example.demo.graph.DependencyGraph;
+import io.ouka.demo.graph.DependencyGraph;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

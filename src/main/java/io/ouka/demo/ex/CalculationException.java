@@ -1,4 +1,4 @@
-package org.example.demo.ex;
+package io.ouka.demo.ex;
 
 public class CalculationException extends RuntimeException {
     public CalculationException(String message) {

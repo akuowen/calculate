@@ -1,9 +1,9 @@
-package org.example.demo;
+package io.ouka.demo;
 
-import org.example.demo.ex.CalculationException;
-import org.example.demo.ex.ParseException;
-import org.example.demo.graph.DependencyGraph;
-import org.example.demo.newnode.ExpressionNode;
+import io.ouka.demo.ex.CalculationException;
+import io.ouka.demo.ex.ParseException;
+import io.ouka.demo.graph.DependencyGraph;
+import io.ouka.demo.newnode.ExpressionNode;
 
 import java.util.Map;
 import java.util.Set;

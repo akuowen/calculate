@@ -1,4 +1,4 @@
-package org.example.demo;
+package io.ouka.demo;
 
 import java.util.*;
 

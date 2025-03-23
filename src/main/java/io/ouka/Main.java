@@ -1,4 +1,4 @@
-package org.example;
+package io.ouka;
 
 public class Main {
     public static void main(String[] args) {
