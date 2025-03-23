@@ -1,7 +1,7 @@
 # BigDecimal AST Expression Engine
 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License](http://img.shields.io/:license-Apache%202-blue.svg)](https://github.com/apache/arrow/blob/main/LICENSE.txt)
 
 **Read this in other languages: [简体中文](README_CN.md)**
 
